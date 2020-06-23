@@ -24,7 +24,7 @@ RCT_EXPORT_METHOD(initialize)
     RCTLogInfo(@"Initialize is deprecated in v2");
 }
 
-RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString features:(NSDictionary *)featureFlags)
+RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString)
 {
     RCTLogInfo(@"Load URL %@", urlString);
     RCTLogInfo(@"Token %@", tokenString);
@@ -57,7 +57,7 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
     });
 }
 
-RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)token features:(NSDictionary *)featureFlags)
+RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)token)
 {
     RCTLogInfo(@"Load Audio only URL %@", urlString);
     RCTLogInfo(@"Token %@", token);
