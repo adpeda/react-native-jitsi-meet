@@ -27,7 +27,7 @@ RCT_EXPORT_METHOD(initialize)
 RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString)
 {
     RCTLogInfo(@"Load URL %@", urlString);
-    RTCLogInfo(@"Token %@", tokenString);
+    RCTLogInfo(@"Token %@", tokenString);
     JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
     if (userInfo != NULL) {
       if (userInfo[@"displayName"] != NULL) {
@@ -55,7 +55,7 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
 RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)token)
 {
     RCTLogInfo(@"Load Audio only URL %@", urlString);
-    RTCLogInfo(@"Token %@", token);
+    RCTLogInfo(@"Token %@", token);
     JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
     if (userInfo != NULL) {
       if (userInfo[@"displayName"] != NULL) {
