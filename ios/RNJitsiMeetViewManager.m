@@ -47,7 +47,7 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
             builder.subject = subject;
             builder.token = tokenString;
             builder.userInfo = _userInfo;
-            builder.features = featureFlags;
+            builder.featureFlags = featureFlags;
         }];
         [jitsiMeetView join:options];
     });
@@ -76,7 +76,7 @@ RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userI
             builder.userInfo = _userInfo;
             builder.subject = subject;
             builder.token = token;
-            builder.features = featureFlags;
+            builder.featureFlags = featureFlags;
             builder.audioOnly = YES;
         }];
         [jitsiMeetView join:options];
