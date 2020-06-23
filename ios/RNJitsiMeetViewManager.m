@@ -24,7 +24,7 @@ RCT_EXPORT_METHOD(initialize)
     RCTLogInfo(@"Initialize is deprecated in v2");
 }
 
-RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString)
+RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString features:(NSDictionary *)featureFlags)
 {
     RCTLogInfo(@"Load URL %@", urlString);
     RCTLogInfo(@"Token %@", tokenString);
@@ -47,13 +47,13 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
             builder.subject = subject;
             builder.token = tokenString;
             builder.userInfo = _userInfo;
-            builder.setFeatureFlag("invite.enabled", withBoolean: false);
+            builder.features = featureFlags;
         }];
         [jitsiMeetView join:options];
     });
 }
 
-RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)token)
+RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)token features:(NSDictionary *)featureFlags)
 {
     RCTLogInfo(@"Load Audio only URL %@", urlString);
     RCTLogInfo(@"Token %@", token);
@@ -76,7 +76,7 @@ RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userI
             builder.userInfo = _userInfo;
             builder.subject = subject;
             builder.token = token;
-            builder.setFeatureFlag("invite.enabled", withBoolean: false);
+            builder.features = featureFlags;
             builder.audioOnly = YES;
         }];
         [jitsiMeetView join:options];
