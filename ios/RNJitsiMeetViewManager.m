@@ -24,9 +24,10 @@ RCT_EXPORT_METHOD(initialize)
     RCTLogInfo(@"Initialize is deprecated in v2");
 }
 
-RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)token)
+RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString)
 {
     RCTLogInfo(@"Load URL %@", urlString);
+    RTCLogInfo(@"Token %@", tokenString);
     JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
     if (userInfo != NULL) {
       if (userInfo[@"displayName"] != NULL) {
@@ -44,7 +45,7 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {        
             builder.room = urlString;
             builder.subject = subject;
-            builder.token = token;
+            builder.token = tokenString;
             builder.userInfo = _userInfo;
         }];
         [jitsiMeetView join:options];
@@ -54,6 +55,7 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
 RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)token)
 {
     RCTLogInfo(@"Load Audio only URL %@", urlString);
+    RTCLogInfo(@"Token %@", token);
     JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
     if (userInfo != NULL) {
       if (userInfo[@"displayName"] != NULL) {
