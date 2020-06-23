@@ -40,6 +40,11 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
         NSURL *url = [NSURL URLWithString:[userInfo[@"avatar"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
         _userInfo.avatar = url;
       }
+      _userInfo.setFeatureFlag("invite.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("meeting-password.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("welcomepage.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("add-people.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("live-streaming.enabled" withBoolean: false);
     }
     dispatch_sync(dispatch_get_main_queue(), ^{
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {        
@@ -47,7 +52,6 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
             builder.subject = subject;
             builder.token = tokenString;
             builder.userInfo = _userInfo;
-            builder.featureFlags = featureFlags;
         }];
         [jitsiMeetView join:options];
     });
@@ -69,6 +73,11 @@ RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userI
         NSURL *url = [NSURL URLWithString:[userInfo[@"avatar"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
         _userInfo.avatar = url;
       }
+      _userInfo.setFeatureFlag("invite.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("meeting-password.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("welcomepage.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("add-people.enabled" withBoolean: false);
+      _userInfo.setFeatureFlag("live-streaming.enabled" withBoolean: false);
     }
     dispatch_sync(dispatch_get_main_queue(), ^{
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {        
@@ -76,7 +85,6 @@ RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userI
             builder.userInfo = _userInfo;
             builder.subject = subject;
             builder.token = token;
-            builder.featureFlags = featureFlags;
             builder.audioOnly = YES;
         }];
         [jitsiMeetView join:options];
