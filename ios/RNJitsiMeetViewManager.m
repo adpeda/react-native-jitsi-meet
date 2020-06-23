@@ -47,6 +47,7 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
             builder.subject = subject;
             builder.token = tokenString;
             builder.userInfo = _userInfo;
+            builder.setFeatureFlag("invite.enabled", withBoolean: false);
         }];
         [jitsiMeetView join:options];
     });
@@ -75,6 +76,7 @@ RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userI
             builder.userInfo = _userInfo;
             builder.subject = subject;
             builder.token = token;
+            builder.setFeatureFlag("invite.enabled", withBoolean: false);
             builder.audioOnly = YES;
         }];
         [jitsiMeetView join:options];
