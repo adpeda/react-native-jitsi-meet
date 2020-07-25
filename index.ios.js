@@ -8,18 +8,14 @@ export const JitsiMeetView = requireNativeComponent('RNJitsiMeetView');
 export const JitsiMeetModule = NativeModules.RNJitsiMeetView;
 const call = JitsiMeetModule.call;
 const audioCall = JitsiMeetModule.audioCall;
-JitsiMeetModule.call = (url, userInfo, subject, token) => {
+
+JitsiMeetModule.call = (url, userInfo, meetOptions, meetFeatureFlags) => {
   userInfo = userInfo || {};
-  token = token || "";
-  subject = subject || "";
-  call(url, userInfo, subject, token);
-}
-JitsiMeetModule.audioCall = (url, userInfo, subject, token) => {
+  call(url, userInfo, meetOptions, meetFeatureFlags);
+};
+JitsiMeetModule.audioCall = (url, userInfo) => {
   userInfo = userInfo || {};
-  token = token || "";
-  subject = subject || "";
-  audioCall(url, userInfo, subject, token);
-}
+  audioCall(url, userInfo);
+};
+
 export default JitsiMeetModule;
-
-
