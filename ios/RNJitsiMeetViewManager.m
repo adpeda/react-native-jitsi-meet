@@ -24,10 +24,24 @@ RCT_EXPORT_METHOD(initialize)
     RCTLogInfo(@"Initialize is deprecated in v2");
 }
 
+<<<<<<< HEAD
 RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString)
 {
     RCTLogInfo(@"Load URL %@", urlString);
     RCTLogInfo(@"Token %@", tokenString);
+=======
+RCT_EXPORT_METHOD(
+  call:(NSString *)urlString
+  userInfo:(NSDictionary *)userInfo
+  meetOptions:(NSDictionary *)meetOptions
+  meetFeatureFlags:(NSDictionary *)meetFeatureFlags
+)
+{
+    // RCTLogInfo(@"Load URL %@", urlString);
+    // RCTLogInfo(@"Load meetOptions %@", meetOptions);
+    // RCTLogInfo(@"Load meetOptions VideoOnly %@", meetOptions[@"audioOnly"]);
+
+>>>>>>> ac60523a79647e8f2839831a7b65d321cab15aff
     JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
     if (userInfo != NULL) {
       if (userInfo[@"displayName"] != NULL) {
@@ -44,8 +58,34 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo s
     dispatch_sync(dispatch_get_main_queue(), ^{
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {        
             builder.room = urlString;
+<<<<<<< HEAD
             builder.subject = subject;
             builder.token = tokenString;
+=======
+            builder.token = meetOptions[@"token"];
+            builder.subject = meetOptions[@"subject"];
+            builder.videoMuted = [[meetOptions objectForKey:@"videoMuted"] boolValue];
+            builder.audioOnly = [[meetOptions objectForKey:@"audioOnly"] boolValue];
+            builder.audioMuted = [[meetOptions objectForKey:@"audioMuted"] boolValue];
+
+            [builder setFeatureFlag:@"add-people.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"add-people.enabled"] boolValue]];
+            [builder setFeatureFlag:@"calendar.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"calendar.enabled"] boolValue]];
+            [builder setFeatureFlag:@"call-integration.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"call-integration.enabled"] boolValue]];
+            [builder setFeatureFlag:@"chat.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"chat.enabled"] boolValue]];
+            [builder setFeatureFlag:@"close-captions.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"close-captions.enabled"] boolValue]];
+            [builder setFeatureFlag:@"invite.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"invite.enabled"] boolValue]];
+            [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"ios.recording.enabled"] boolValue]];
+            [builder setFeatureFlag:@"live-streaming.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"live-streaming.enabled"] boolValue]];
+            [builder setFeatureFlag:@"meeting-name.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"meeting-name.enabled"] boolValue]];
+            [builder setFeatureFlag:@"meeting-password.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"meeting-password.enabled"] boolValue]];
+            [builder setFeatureFlag:@"pip.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"pip.enabled"] boolValue]];
+            [builder setFeatureFlag:@"pip.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"pip.enabled"] boolValue]];
+            [builder setFeatureFlag:@"pip.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"pip.enabled"] boolValue]];
+            [builder setFeatureFlag:@"tile-view.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"tile-view.enabled"] boolValue]];
+            [builder setFeatureFlag:@"tile-view.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"tile-view.enabled"] boolValue]];
+            [builder setFeatureFlag:@"welcomepage.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"welcomepage.enabled"] boolValue]];
+
+>>>>>>> ac60523a79647e8f2839831a7b65d321cab15aff
             builder.userInfo = _userInfo;
             [builder setFeatureFlag:@"invite.enabled" withBoolean:false];
             [builder setFeatureFlag:@"meeting-password.enabled" withBoolean: false];

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "react-native-jitsi-meet",
   "description": "Jitsi Meet SDK wrapper for React Native.",
   "version": "2.2.37",
@@ -9,11 +10,21 @@
   "contributors": [
   ],
   "homepage": "https://github.com/themsquared/react-native-jitsi-meet",
+=======
+  "name": "react-native-jitsi-meet-with-options",
+  "description": "Jitsi Meet SDK wrapper for React Native including token, options and feature flags.",
+  "version": "0.1.2",
+  "author": {
+    "name": "Farhad Eidi",
+    "email": "farcom7@gmail.com"
+  },
+  "contributors": [],
+  "homepage": "https://github.com/farhadeidi/react-native-jitsi-meet-with-options",
+>>>>>>> ac60523a79647e8f2839831a7b65d321cab15aff
   "bugs": {
     "url": "https://github.com/themsquared/react-native-jitsi-meet/issues"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "keywords": [
     "jitsi",
     "jitsi meet",
@@ -33,6 +44,10 @@
   "nativePackage": true,
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "https://github.com/themsquared/react-native-jitsi-meet.git"
+=======
+    "url": "https://github.com/farhadeidi/react-native-jitsi-meet-with-options.git"
+>>>>>>> ac60523a79647e8f2839831a7b65d321cab15aff
   }
 }
