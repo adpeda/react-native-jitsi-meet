@@ -24,12 +24,6 @@ RCT_EXPORT_METHOD(initialize)
     RCTLogInfo(@"Initialize is deprecated in v2");
 }
 
-<<<<<<< HEAD
-RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo subject:(NSString *)subject token:(NSString *)tokenString)
-{
-    RCTLogInfo(@"Load URL %@", urlString);
-    RCTLogInfo(@"Token %@", tokenString);
-=======
 RCT_EXPORT_METHOD(
   call:(NSString *)urlString
   userInfo:(NSDictionary *)userInfo
@@ -41,7 +35,6 @@ RCT_EXPORT_METHOD(
     // RCTLogInfo(@"Load meetOptions %@", meetOptions);
     // RCTLogInfo(@"Load meetOptions VideoOnly %@", meetOptions[@"audioOnly"]);
 
->>>>>>> ac60523a79647e8f2839831a7b65d321cab15aff
     JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
     if (userInfo != NULL) {
       if (userInfo[@"displayName"] != NULL) {
@@ -58,10 +51,6 @@ RCT_EXPORT_METHOD(
     dispatch_sync(dispatch_get_main_queue(), ^{
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {        
             builder.room = urlString;
-<<<<<<< HEAD
-            builder.subject = subject;
-            builder.token = tokenString;
-=======
             builder.token = meetOptions[@"token"];
             builder.subject = meetOptions[@"subject"];
             builder.videoMuted = [[meetOptions objectForKey:@"videoMuted"] boolValue];
@@ -85,7 +74,6 @@ RCT_EXPORT_METHOD(
             [builder setFeatureFlag:@"tile-view.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"tile-view.enabled"] boolValue]];
             [builder setFeatureFlag:@"welcomepage.enabled" withBoolean:[[meetFeatureFlags objectForKey:@"welcomepage.enabled"] boolValue]];
 
->>>>>>> ac60523a79647e8f2839831a7b65d321cab15aff
             builder.userInfo = _userInfo;
             [builder setFeatureFlag:@"invite.enabled" withBoolean:false];
             [builder setFeatureFlag:@"meeting-password.enabled" withBoolean: false];
